@@ -10,7 +10,6 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>idempotent-example</module>
         <module>idempotent-spring-boot-starter</module>
     </modules>
 
@@ -21,6 +20,10 @@
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <name>spring-boot-starter-dependencies</name>
+    <description>all useful dependencies management for spring boot starter</description>
+    <url>https://github.com/yao-wenbin/spring-boot-starter-dependencies</url>
 
     <licenses>
         <license>
