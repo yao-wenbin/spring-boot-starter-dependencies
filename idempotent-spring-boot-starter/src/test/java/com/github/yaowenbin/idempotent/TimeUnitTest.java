@@ -19,6 +19,9 @@ class TimeUnitTest {
          * error:
          * long convert = unit.convert(interval, TimeUnit.MILLISECONDS);
          */
+        /**
+         * correct:
+         */
         long convert = TimeUnit.MILLISECONDS.convert(interval, unit);
 
         Assertions.assertEquals(1000, convert);

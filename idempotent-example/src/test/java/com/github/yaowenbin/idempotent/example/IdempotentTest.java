@@ -3,7 +3,7 @@ package com.github.yaowenbin.idempotent.example;
 import com.github.yaowenbin.idempotent.IdempotentProperties;
 import com.github.yaowenbin.idempotent.example.base.IdempotentExampleInstance;
 import com.github.yaowenbin.idempotent.example.base.IdempotentExampleTest;
-import com.github.yaowenbin.idempotent.IdempotentCache;
+import com.github.yaowenbin.idempotent.store.IdempotentStore;
 import com.github.yaowenbin.idempotent.IdempotentException;
 import com.github.yaowenbin.idempotent.example.base.User;
 import com.github.yaowenbin.idempotent.example.base.UserContext;
@@ -23,7 +23,7 @@ class IdempotentTest extends IdempotentExampleTest {
     IdempotentExampleInstance instance;
 
     @Autowired
-    IdempotentCache cache;
+    IdempotentStore cache;
 
     @Autowired
     UserContext userContext;

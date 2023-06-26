@@ -8,7 +8,7 @@ import org.aspectj.lang.ProceedingJoinPoint;
  */
 public abstract class KeyParser {
 
-    public KeyParser nextParser;
+    private KeyParser nextParser;
 
     /**
      * 链式调用责任链

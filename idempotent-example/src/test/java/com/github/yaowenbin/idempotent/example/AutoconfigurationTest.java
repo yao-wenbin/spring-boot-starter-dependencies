@@ -1,7 +1,7 @@
 package com.github.yaowenbin.idempotent.example;
 
 import com.github.yaowenbin.idempotent.example.base.IdempotentExampleTest;
-import com.github.yaowenbin.idempotent.IdempotentCache;
+import com.github.yaowenbin.idempotent.store.IdempotentStore;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class AutoconfigurationTest extends IdempotentExampleTest {
 
     @Autowired
-    IdempotentCache cache;
+    IdempotentStore cache;
 
     @Test
     void loadCache() {

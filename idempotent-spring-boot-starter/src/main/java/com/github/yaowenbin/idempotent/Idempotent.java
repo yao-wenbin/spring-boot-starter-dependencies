@@ -14,10 +14,24 @@ import java.util.concurrent.TimeUnit;
 @Target(ElementType.METHOD)
 public @interface Idempotent {
 
-    String key() default "token";
+    /**
+     * Key
+     */
+    String key() default "";
 
-    int interval() default 1000;
+    /**
+     * 重复提交间隔
+     */
+    int interval() default 500;
 
+    /**
+     * 时间单位
+     */
     TimeUnit unit() default TimeUnit.MILLISECONDS;
+
+    /**
+     * 错误信息
+     */
+    String errMsg() default "重复提交请求";
 
 }
