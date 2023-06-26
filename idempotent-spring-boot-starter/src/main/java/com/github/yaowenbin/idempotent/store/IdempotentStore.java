@@ -1,7 +1,5 @@
 package com.github.yaowenbin.idempotent.store;
 
-import com.github.yaowenbin.idempotent.Idempotent;
-
 import java.lang.reflect.Method;
 import java.util.concurrent.TimeUnit;
 
@@ -19,7 +17,7 @@ public interface IdempotentStore {
 
     void clear();
 
-    Boolean value = Boolean.TRUE;
+    Boolean VALUE = Boolean.TRUE;
 
     // 使用方法的全限定名作为Key，比如说com.yaowenbin.idempotent.IdempotentInstance#dosomething.
     default String buildKey(Method method, String simpleKey) {

@@ -1,12 +1,12 @@
 package com.github.yaowenbin.idempotent.example;
 
+import com.github.yaowenbin.idempotent.IdempotentException;
 import com.github.yaowenbin.idempotent.IdempotentProperties;
 import com.github.yaowenbin.idempotent.example.base.IdempotentExampleInstance;
 import com.github.yaowenbin.idempotent.example.base.IdempotentExampleTest;
-import com.github.yaowenbin.idempotent.store.IdempotentStore;
-import com.github.yaowenbin.idempotent.IdempotentException;
 import com.github.yaowenbin.idempotent.example.base.User;
 import com.github.yaowenbin.idempotent.example.base.UserContext;
+import com.github.yaowenbin.idempotent.store.IdempotentStore;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -45,6 +45,7 @@ class IdempotentTest extends IdempotentExampleTest {
     @Test
     void idempotent_shouldProceedAfterFiveSecondThenCall() throws InterruptedException {
         instance.doSomething();
+
         Thread.sleep(1000);
 
         Assertions.assertDoesNotThrow(() -> {

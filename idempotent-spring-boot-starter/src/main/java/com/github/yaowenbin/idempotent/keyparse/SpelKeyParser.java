@@ -38,7 +38,7 @@ public class SpelKeyParser extends KeyParser {
         Method method = signature.getMethod();
         Object [] args = jp.getArgs();
 
-        StandardEvaluationContext context = new MethodBasedEvaluationContext(null, method, args, NAME_DISCOVERER);
+        StandardEvaluationContext context = new MethodBasedEvaluationContext(jp, method, args, NAME_DISCOVERER);
         context.setBeanResolver(beanResolver);
 
         final Object value = PARSER.parseExpression(key).getValue(context);

@@ -1,12 +1,9 @@
 package com.github.yaowenbin.idempotent.store;
 
-import com.github.yaowenbin.idempotent.Idempotent;
-import com.github.yaowenbin.idempotent.store.IdempotentStore;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 
 import java.lang.reflect.Method;
-import java.util.Collections;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
@@ -29,7 +26,7 @@ public class IdempotentStoreRedisTemplate implements IdempotentStore {
 
     @Override
     public boolean exists(String key) {
-        return value.equals(
+        return VALUE.equals(
                 redisTemplate.hasKey(
                     key
         ));
@@ -37,13 +34,13 @@ public class IdempotentStoreRedisTemplate implements IdempotentStore {
 
     @Override
     public IdempotentStore put(String key) {
-        ops.setIfAbsent(key, value);
+        ops.setIfAbsent(key, VALUE);
         return this;
     }
 
     @Override
     public IdempotentStore put(String key, int interval, TimeUnit timeUnit) {
-        ops.setIfAbsent(key, value, interval, timeUnit);
+        ops.setIfAbsent(key, VALUE, interval, timeUnit);
         return this;
     }
 

@@ -5,7 +5,6 @@ import com.github.yaowenbin.idempotent.example_redis.base.TestInstance;
 import com.github.yaowenbin.idempotent.store.IdempotentStore;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.data.redis.core.RedisTemplate;
 
 import java.lang.reflect.Method;
@@ -16,7 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @Author yaowenbin
  * @Date 2023/6/26
  */
-public class IdempotentTest extends IdempotentExampleTest {
+class IdempotentTest extends IdempotentExampleTest {
 
     @Autowired
     RedisTemplate redisTemplate;

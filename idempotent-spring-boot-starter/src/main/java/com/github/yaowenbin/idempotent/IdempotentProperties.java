@@ -3,7 +3,6 @@ package com.github.yaowenbin.idempotent;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-import javax.annotation.PostConstruct;
 import java.util.concurrent.TimeUnit;
 
 /**

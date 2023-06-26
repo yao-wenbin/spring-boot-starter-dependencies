@@ -7,7 +7,6 @@ import com.github.yaowenbin.idempotent.keyparse.TokenParser;
 import com.github.yaowenbin.idempotent.store.IdempotentStore;
 import com.github.yaowenbin.idempotent.store.IdempotentStoreCaffeine;
 import com.github.yaowenbin.idempotent.store.IdempotentStoreRedisTemplate;
-import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -17,8 +16,6 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.expression.BeanFactoryResolver;
 import org.springframework.data.redis.core.RedisTemplate;
 
-import java.util.Map;
-import java.util.Optional;
 
 /**
  * @Author yaowenbin

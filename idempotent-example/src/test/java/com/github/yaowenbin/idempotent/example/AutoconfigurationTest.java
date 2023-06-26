@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
  * @Author yaowenbin
  * @Date 2023/6/20
  */
-public class AutoconfigurationTest extends IdempotentExampleTest {
+class AutoconfigurationTest extends IdempotentExampleTest {
 
     @Autowired
     IdempotentStore cache;

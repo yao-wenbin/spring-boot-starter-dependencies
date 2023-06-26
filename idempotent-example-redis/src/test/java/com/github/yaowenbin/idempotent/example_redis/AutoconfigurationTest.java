@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @Author yaowenbin
  * @Date 2023/6/26
  */
-public class AutoconfigurationTest extends IdempotentExampleTest {
+class AutoconfigurationTest extends IdempotentExampleTest {
 
 
     @Autowired

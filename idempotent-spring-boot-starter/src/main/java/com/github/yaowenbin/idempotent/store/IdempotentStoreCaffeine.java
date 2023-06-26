@@ -12,8 +12,6 @@ import java.util.concurrent.TimeUnit;
  */
 public class IdempotentStoreCaffeine implements IdempotentStore {
 
-    private final Boolean value = Boolean.TRUE;
-
     private final TimedCache<String/* method + key */, Boolean /* expiredTime */> cache;
 
     public IdempotentStoreCaffeine(IdempotentProperties properties) {
@@ -28,18 +26,18 @@ public class IdempotentStoreCaffeine implements IdempotentStore {
 
     @Override
     public boolean exists(String key) {
-        return value.equals(cache.get(key));
+        return VALUE.equals(cache.get(key));
     }
 
     @Override
     public IdempotentStore put(String key) {
-        cache.put(key, value);
+        cache.put(key, VALUE);
         return this;
     }
 
     @Override
     public IdempotentStore put(String key, int interval, TimeUnit timeUnit) {
-        cache.put(key, value, convertMillSeconds(interval, timeUnit));
+        cache.put(key, VALUE, convertMillSeconds(interval, timeUnit));
         return this;
     }
 

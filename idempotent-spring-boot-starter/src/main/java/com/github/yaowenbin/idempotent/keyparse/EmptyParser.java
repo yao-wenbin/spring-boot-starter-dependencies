@@ -9,7 +9,7 @@ import org.springframework.util.StringUtils;
  */
 public class EmptyParser extends KeyParser {
 
-    private final String EMPTY_STRING = "";
+    private static final String EMPTY_STRING = "";
 
     @Override
     public boolean match(String key) {

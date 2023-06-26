@@ -2,12 +2,8 @@ package com.github.yaowenbin.idempotent.keyparse;
 
 import com.github.yaowenbin.idempotent.IdempotentException;
 import com.github.yaowenbin.idempotent.IdempotentProperties;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.springframework.beans.factory.BeanFactory;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.expression.BeanFactoryResolver;
 import org.springframework.expression.BeanResolver;
 import org.springframework.util.StringUtils;
 
@@ -23,7 +19,7 @@ public class TokenParser extends SpelKeyParser{
 
     private final IdempotentProperties properties;
 
-    public List<String> MATCH_KEYS = List.of("#token", "token");
+    public static final List<String> MATCH_KEYS = List.of("#token", "token");
 
     public TokenParser(BeanResolver beanResolver, IdempotentProperties properties) {
         super(beanResolver);
