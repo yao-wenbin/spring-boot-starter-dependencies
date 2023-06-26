@@ -5,6 +5,7 @@ import com.github.yaowenbin.idempotent.store.IdempotentStore;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 
+import java.lang.reflect.Method;
 import java.util.Collections;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
@@ -28,7 +29,6 @@ public class IdempotentStoreRedisTemplate implements IdempotentStore {
 
     @Override
     public boolean exists(String key) {
-        key = wrapWithPrefix(key);
         return value.equals(
                 redisTemplate.hasKey(
                     key
@@ -37,14 +37,12 @@ public class IdempotentStoreRedisTemplate implements IdempotentStore {
 
     @Override
     public IdempotentStore put(String key) {
-        key = wrapWithPrefix(key);
         ops.setIfAbsent(key, value);
         return this;
     }
 
     @Override
     public IdempotentStore put(String key, int interval, TimeUnit timeUnit) {
-        key = wrapWithPrefix(key);
         ops.setIfAbsent(key, value, interval, timeUnit);
         return this;
     }
@@ -56,6 +54,12 @@ public class IdempotentStoreRedisTemplate implements IdempotentStore {
             return ;
         }
         redisTemplate.delete(keys);
+    }
+
+    @Override
+    public String buildKey(Method method, String simpleKey) {
+        String buildKey = IdempotentStore.super.buildKey(method, simpleKey);
+        return wrapWithPrefix(buildKey);
     }
 
     private String wrapWithPrefix(String key) {
