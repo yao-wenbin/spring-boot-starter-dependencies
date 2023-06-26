@@ -1,5 +1,6 @@
 package com.github.yaowenbin.idempotent.example;
 
+import com.github.yaowenbin.idempotent.IdempotentAspect;
 import com.github.yaowenbin.idempotent.example.base.IdempotentExampleTest;
 import com.github.yaowenbin.idempotent.store.IdempotentStore;
 import org.junit.jupiter.api.Test;
@@ -16,10 +17,15 @@ public class AutoconfigurationTest extends IdempotentExampleTest {
     @Autowired
     IdempotentStore cache;
 
+    @Autowired
+    IdempotentAspect aspect;
+
     @Test
-    void loadCache() {
+    void autoconfiguration() {
         assertNotNull(cache);
+        assertNotNull(aspect);
     }
+
 
 
 }
