@@ -11,6 +11,11 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @Data
 public class IdempotentProperties {
 
-    private int interval;
+    private int interval = 500;
+
+    /***
+     * 从当前IOC容器中获取token的表达式
+     */
+    private String tokenExpression;
 
 }

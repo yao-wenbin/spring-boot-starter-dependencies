@@ -1,5 +1,7 @@
 package com.github.yaowenbin.idempotent;
 
+import com.github.yaowenbin.idempotent.keyparse.KeyParser;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -13,9 +15,6 @@ import org.springframework.expression.spel.standard.SpelExpressionParser;
 import org.springframework.expression.spel.support.StandardEvaluationContext;
 
 import java.lang.reflect.Method;
-import java.util.Map;
-import java.util.Timer;
-import java.util.concurrent.TimeUnit;
 
 /**
  * @Author yaowenbin
@@ -24,13 +23,12 @@ import java.util.concurrent.TimeUnit;
 @Aspect
 @Configuration
 @Slf4j
+@RequiredArgsConstructor
 public class IdempotentAspect {
 
     private final IdempotentCache cache;
 
-    public IdempotentAspect(IdempotentCache cache) {
-        this.cache = cache;
-    }
+    private final KeyParser parser;
 
     @Pointcut("@annotation(com.github.yaowenbin.idempotent.Idempotent)")
     public void pointcut() {
@@ -45,18 +43,16 @@ public class IdempotentAspect {
         Object [] args = joinPoint.getArgs();
         Idempotent idempotent = method.getAnnotation(Idempotent.class);
 
-        // String result = parseExpression(idempotent.valExpression(), methodParams, args);
-
-        // String key = method.getName().concat(result);
+        String result = parser.parseKey(idempotent.key(), joinPoint);
 
         // 使用方法的全限定名作为Key，比如说com.yaowenbin.idempotent.IdempotentInstance#dosomething.
-        String key = signature.getDeclaringTypeName() + "#" + method.getName();
+        String key = method.getDeclaringClass().getCanonicalName() + "#" + method.getName() + "#" + result;
 
         if (cache.exists(key)) {
             throw new IdempotentException("重复提交请求");
         }
 
-        log.info("未找到重复请求，加入重复请求Map");
+        log.info("未找到重复请求，加入重复请求Map, key: {}", key);
         cache.put(key, idempotent.interval(), idempotent.unit());
 
         return joinPoint.proceed();

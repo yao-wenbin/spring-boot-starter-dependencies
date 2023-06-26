@@ -5,6 +5,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
@@ -29,4 +30,6 @@ public class IdempotentExampleTest implements CommandLineRunner {
             SpringApplication.run(IdempotentExampleTest.class, args);
         }
     }
+
+
 }

@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 @Target(ElementType.METHOD)
 public @interface Idempotent {
 
-    String valExpression() default "token";
+    String key() default "token";
 
     int interval() default 1000;
 
