@@ -11,6 +11,8 @@
 
     <modules>
         <module>idempotent-spring-boot-starter</module>
+        <module>httplogging-spring-boot-starter</module>
+        <module>common</module>
     </modules>
 
 
