@@ -31,8 +31,10 @@ public class RequestParser extends KeyParser {
             return "";
         }
         HttpServletRequest request = requestAttributes.getRequest();
+        return request.getParameter(realKey(key));
+    }
 
-        // TODO
-        return "";
+    public String realKey(String key) {
+        return key.substring(REQUEST_PREFIX_LEN);
     }
 }

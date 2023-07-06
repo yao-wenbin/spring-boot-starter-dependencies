@@ -22,4 +22,6 @@ public class IdempotentProperties {
      */
     private String tokenExpression;
 
+    private String redisTemplate = "redisTemplate";
+
 }
